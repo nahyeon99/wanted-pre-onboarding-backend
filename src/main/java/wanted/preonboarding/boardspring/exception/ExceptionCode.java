@@ -33,8 +33,8 @@ public enum ExceptionCode {
     /**
      * 403 FORBIDDEN : 권한이 없는 사용자
      */
-    ACCESSDENIED_RESOURCE(FORBIDDEN, "접근 권한이 없습니다."),
-    ACCESSDENIED_POST(FORBIDDEN, "게시글 수정 및 삭제 권한이 없습니다."),
+    ACCESS_DENIED_RESOURCE(FORBIDDEN, "접근 권한이 없습니다."),
+    ACCESS_DENIED_POST(FORBIDDEN, "게시글 수정 및 삭제 권한이 없습니다."),
 
     /**
      * 404 NOT_FOUND : Resource 를 찾을 수 없음
