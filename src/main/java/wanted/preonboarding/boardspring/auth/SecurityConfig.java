@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import wanted.preonboarding.boardspring.exception.CustomAccessDeniedHandler;
 import wanted.preonboarding.boardspring.exception.CustomAuthenticationEntryPointHandler;
-import wanted.preonboarding.boardspring.exception.JwtExceptionHandler;
 
 
 @Configuration
@@ -60,7 +59,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .addFilterBefore(new CustomJwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(new JwtExceptionHandler(), CustomJwtAuthenticationFilter.class)
         ;
 
     }
