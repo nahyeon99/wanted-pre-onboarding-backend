@@ -91,7 +91,6 @@ public class PostController {
     })
     @GetMapping("/v1/posts")
     public ResponseEntity<DefaultResponseDto<Object>> foundAllPost(
-            HttpServletRequest servletRequest,
             @RequestParam int pageNumber,
             @RequestParam(required = false) Integer pageCount
     ) {
@@ -120,7 +119,6 @@ public class PostController {
     })
     @GetMapping("/v1/post/{postId}")
     public ResponseEntity<DefaultResponseDto<Object>> foundPost(
-            HttpServletRequest servletRequest,
             @PathVariable(value = "postId")
             @Positive(message = "검색할 게시글 식별자는 양수만 가능합니다.")
             Long postId

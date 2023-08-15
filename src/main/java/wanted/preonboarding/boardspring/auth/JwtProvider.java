@@ -1,9 +1,6 @@
 package wanted.preonboarding.boardspring.auth;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,12 +8,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import wanted.preonboarding.boardspring.exception.CustomException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 import java.util.Date;
 
 import static wanted.preonboarding.boardspring.auth.SecurityConfig.AUTHENTICATION_HEADER_NAME;
+import static wanted.preonboarding.boardspring.exception.ExceptionCode.*;
 
 @Component
 @Slf4j
@@ -50,7 +49,15 @@ public class JwtProvider {
     }
 
     public String getUsername(String token) {
-        return Jwts.parser().setSigningKey(JWT_SECRET_KEY).parseClaimsJws(token).getBody().getSubject();
+        try {
+            return Jwts.parser()
+                    .setSigningKey(JWT_SECRET_KEY)
+                    .parseClaimsJws(token)
+                    .getBody()
+                    .getSubject();
+        } catch (IllegalArgumentException | JwtException e) {
+            throw new CustomException(e, UNAUTHORIZED_MEMBER);
+        }
     }
 
     public String resolveToken(HttpServletRequest request) {

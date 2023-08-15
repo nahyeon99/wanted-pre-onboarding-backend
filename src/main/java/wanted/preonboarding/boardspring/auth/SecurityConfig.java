@@ -13,7 +13,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import wanted.preonboarding.boardspring.exception.CustomAccessDeniedHandler;
 import wanted.preonboarding.boardspring.exception.CustomAuthenticationEntryPointHandler;
 
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
