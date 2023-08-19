@@ -75,7 +75,7 @@ public class MemberController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "MEMBER_FOUND",
+                    description = "MEMBER_LOGIN",
                     content = @Content(schema = @Schema(implementation = MemberDefaultResponseDto.class))),
             @ApiResponse(responseCode = "400",
                     description = "- FIELD_REQUIRED\n " +

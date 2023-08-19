@@ -1,38 +1,12 @@
+# common
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     hibernate:
-      ddl-auto: none
       use-new-id-generator-mappings: false
-    properties:
-      hibernate:
-        show_sql: false
-        format_sql: true
-        highlight_sql: true
 
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-
---- # local
-spring:
-  profiles:
-    active: local
-    include: local-db
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create
-  datasource:
-    url: jdbc:mysql://localhost:8080/board?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=true&serverTimezone=Asia/Seoul
-    username: board
-    password: board1111
-jwt:
-  secret: tmpsecret
-
---- # prod
-spring:
-  profiles:
-    active: prod
-    include: prod-db
