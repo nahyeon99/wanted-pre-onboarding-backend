@@ -1,5 +1,8 @@
 # common
 spring:
+  config:
+#    name: classpath:application.yml, /Users/nahyeon/dev/externalfiles/application-local.yml
+    name: classpath:application.yml, /home/ec2-user/app/application-prod.yml
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
